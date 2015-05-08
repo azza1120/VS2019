@@ -69,6 +69,7 @@ namespace SAT2
             {
                 //Sets variables
                 int index = listBox1.SelectedIndex;
+                int LineNumber = listBox1.SelectedIndex;
                 String name;
                 String location;
                 int quantity;
@@ -78,7 +79,9 @@ namespace SAT2
                 int quantitypass;
                 int serialpass;
                 int corrupt = 0;
-                //SCRIPT TO PREVENT READ ERRORS
+                /*SCRIPT TO PREVENT READ ERRORS
+                Checks to see if all of the data can be read properly and if one or more cannot be read then the 
+                variable corrupt is set to 1 and the read code is skipped to prevent the program from crashing.*/
                 bool priceverifer = float.TryParse(items[index].Split(':')[2], out pricepass);
                 bool quantityverifer = int.TryParse(items[index].Split(':')[3], out quantitypass);
                 bool serialverifer = int.TryParse(items[index].Split(':')[4], out serialpass);
@@ -128,7 +131,21 @@ namespace SAT2
                 else
                 {
                     MessageBox.Show("Database Read Error!");
-
+                    string FileName = "C:\\Users\\har0051\\Documents\\Visual Studio 2013\\Projects\\SAT2\\Stock.txt";
+                    DialogResult dialog1 = MessageBox.Show("Delete broken data?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (dialog1 == DialogResult.Yes)
+                    {
+                        List<string> lst = File.ReadAllLines(FileName).ToList();
+                        lst.RemoveAt(LineNumber);
+                        File.WriteAllLines(FileName, lst.ToArray());
+                        //opens stock form - acts as a refresher.
+                        Form2 NO = new Form2();
+                        NO.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                    }
 
                 }
 
@@ -148,7 +165,7 @@ namespace SAT2
 
         private void btnRemove_Click(object sender, EventArgs e)
 {
-    //Deletes item from text file "Stock"
+            //Deletes item from text file "Stock"
             string FileName = "C:\\Users\\har0051\\Documents\\Visual Studio 2013\\Projects\\SAT2\\Stock.txt";
             int LineNumber = listBox1.SelectedIndex;
 

@@ -1,5 +1,4 @@
 RedFish:Tank1:100:1000:1001
-Fish:Tank:a:1:1
 
 FishN:Tank1:100:1000:1005
 FishT:Tank2:100:1000:1006
