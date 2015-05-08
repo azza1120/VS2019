@@ -30,6 +30,7 @@ namespace SAT2
             }
         }
 
+        public static ListBox lb = new ListBox();
 
         public void loadFromFile()
         {
