@@ -19,6 +19,8 @@ namespace SAT2
         {
             InitializeComponent();
             loadFromFile();
+            //Sorts the list box in alphabetical order (BROKEN - DO NOT USE)
+            // listBox1.Sorted = true;
 
             foreach (String s in items)
             {
@@ -49,6 +51,7 @@ namespace SAT2
         Form3 addForm = new Form3();
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            //Opens FORM3 and closes this one
             addForm.Show();
             this.Close();
         }
@@ -130,6 +133,7 @@ namespace SAT2
                 }
                 else
                 {
+                    /* Presents the user with an error message then offers to delete the broken data */
                     MessageBox.Show("Database Read Error!");
                     string FileName = "C:\\Users\\har0051\\Documents\\Visual Studio 2013\\Projects\\SAT2\\Stock.txt";
                     DialogResult dialog1 = MessageBox.Show("Delete broken data?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
@@ -180,7 +184,7 @@ namespace SAT2
             else
             {
                 //Acts as last resort beofre perminally deleting item.
-                DialogResult dialog1 = MessageBox.Show("Are you sure you want to permanently delete item?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult dialog1 = MessageBox.Show("Are you sure you want to permanently delete item?"+ fishnamelabel.Text, "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialog1 == DialogResult.Yes)
                 {
                     List<string> lst = File.ReadAllLines(FileName).ToList();

@@ -70,7 +70,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "FIsh Name";
+            this.label1.Text = "Item Name";
+            
             // 
             // txtBoxFishName
             // 
@@ -78,6 +79,7 @@
             this.txtBoxFishName.Name = "txtBoxFishName";
             this.txtBoxFishName.Size = new System.Drawing.Size(100, 20);
             this.txtBoxFishName.TabIndex = 1;
+            
             // 
             // label2
             // 
